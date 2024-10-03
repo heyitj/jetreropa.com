@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JÊTRE</title>
+    <style>
+        /* General */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-bar {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .main-header h1 {
+            font-size: 36px;
+            margin: 0;
+            color: #e63946;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #e63946;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        nav ul li:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown p {
+            padding: 10px;
+            margin: 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown p:hover {
+            background-color: #f0f0f0;
+        }
+
+        .user-actions img {
+            width: 30px;
+            margin-left: 15px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .user-actions img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Menu para móvil */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Portada */
+        .portada {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            height: 400px;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* Estilos de cada imagen de portada */
+        .slide1 {
+            background-image: url('portada1.png');
+        }
+        .slide2 {
+            background-image: url('portada2.png');
+        }
+        .slide3 {
+            background-image: url('portada3.png');
+        }
+
+        .banner-text {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .banner-text h2 {
+            font-size: 48px;
+            margin: 0;
+            color: #ffcc00;
+        }
+
+        .banner-text p {
+            font-size: 24px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            text-align: center;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    .auto-style1 {
+		font-family: Verdana, Geneva, Tahoma, sans-serif;
+		color: black;
+	}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            NUEVA TEMPORADA SS'25 <br>
+			<span lang="es">BY</span> JÊTRE
+        </div>
+        
+        <div class="main-header">
+            <h1 class="auto-style1">JÊTRE</h1>
+            <span class="menu-toggle" onclick="toggleMenu()">&#9776;</span>
+            <nav>
+                <ul>
+                    <li><a href="OUR OFICIAL WEBSITE JETRE.html">Home</a></li>
+                    <li>
+                        <a href="#" onclick="toggleDropdown(event)">Productos</a>
+                        <div class="dropdown">
+                            <p><a href="tops&remeras pags.html">Tops & remeras</a></p>
+                            <p><a href="PAGINA DE PANTS Y SHPORTS.html">Shorts & polleras</a></p>
+                            <p><a href="pant pag.html">Pantalones</a></p>
+                            <p><a href="vestidos.html">Vestidos</a></p>
+                            <p><a href="productos-main page.html">Todos los productos</a></p>
+                        </div>
+                    </li>
+                    <li><a href="pagina para comprar.html">¿Cómo comprar?</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="compras.html">
+                    <img alt="Comprar" src="../../../Downloads/WhatsApp%20Image%202024-09-14%20at%2022.03.11%20(2).jpeg" /></a><a href="https://www.instagram.com/jetreropa?igsh=MWoyM2h1N3N2OHNxdg%3D%3D&utm_source=qr"><img alt="Instagram" src="../../../Downloads/WhatsApp%20Image%202024-10-02%20at%2000.06.12.jpeg" />
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="portada">
+        <div class="slides">
+            <div class="slide slide1">
+                <div class="banner-text">
+                    <h2>BIENVENIDO A JÊTRE</h2>
+                    <p>ESTE ES NUESTRO SITIO OFICIAL.</p>
+                </div>
+            </div>
+            <div class="slide slide2">
+                <div class="banner-text">
+                    <h2>NUEVAS TENDENCIAS</h2>
+                    <p>DESCUBRE NUESTROS PRODUCTOS ÚNICOS.</p>
+                </div>
+            </div>
+            <div class="slide slide3">
+                <div class="banner-text">
+                    <h2>CALIDAD GARANTIZADA</h2>
+                    <p>VISTE CON ESTILO Y COMODIDAD.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h2 style="text-align:center; margin: 20px 0;">NUESTROS PRODUCTOS FAVORITOS</h2>
+    <section class="product-grid">
+        <div class="product">
+            <img src="product1.jpg" alt="Vestido Fairy">
+            <p>VESTIDO FAIRY</p>
+        </div>
+        <div class="product">
+            <img alt="Ideal para la noche - en negro" src="../../../Downloads/WhatsApp%20Image%202024-09-30%20at%2001.06.29.jpeg" />
+            <p>TOP BLIND</p>
+        </div>
+        <div class="product">
+            <img src="product3.jpg" alt="Pant NY">
+            <p>PANT NY</p>
+        </div>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('nav ul');
+            menu.classList.toggle('active');
+        }
+
+        function toggleDropdown(event) {
+            event.preventDefault();
+            var dropdown = event.currentTarget.nextElementSibling;
+            dropdown.classList.toggle('active');
+        }
+
+        // Slider
+        let slideIndex = 0;
+
+        function moveSlide(n) {
+            const slides = document.querySelector('.slides');
+            const totalSlides = document.querySelectorAll('.slide').length;
+
+            slideIndex += n;
+
+            if (slideIndex >= totalSlides) {
+                slideIndex = 0;
+            }
+
+            if (slideIndex < 0) {
+                slideIndex = totalSlides - 1;
+            }
+
+            slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+
+        // Automatic slide change
+        setInterval(() => moveSlide(1), 5000); // Cambiar cada 5 segundos
+    </script>
+
+    <footer>
+        <p>&copy; 2024 JÊTRE. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
